@@ -1,3 +1,4 @@
+import { mergeFile } from '@/utils/function'
 export function fnAddDynamicRoutes(dynamicRoutes) {
     function importCompent(dynamicRoutes) {
         dynamicRoutes.map(((val) => {
@@ -7,7 +8,6 @@ export function fnAddDynamicRoutes(dynamicRoutes) {
                 // 3.捕获不存在的组件给其 一个一定存在的组件
                 // 4.prefetch  webpackPrefetch  空闲时才会下载
                 let component = val['component']
-                console.log(component)
                 val['component'] = () => {
                     return import ( /* webpackPrefetch: true */ `@/${component}`)
                         .then((component) => { return component })
@@ -39,19 +39,11 @@ export function fnAddDynamicRoutes(dynamicRoutes) {
 
 let routerList = []
 
-
+// https://webpack.js.org/guides/dependency-management/#requirecontext
 const modulesFiles = require.context('@/modules', true, /\.router.js$/)
-    // const modulesFiles = require.context('./', true, /\.router.js$/)
 
 // it will auto require all vuex module from modules file
-const modules = modulesFiles.keys().reduce((modules, modulePath) => {
-
-    console.log(modules)
-    const moduleName = modulePath.replace(/^\.\/(.*)\.\w+$/, '$1')
-    const value = modulesFiles(modulePath)
-    modules[moduleName] = value.default
-    return modules
-}, {})
+const modules = mergeFile(modulesFiles)
 
 for (let i in modules) {
     routerList.push(...modules[i])

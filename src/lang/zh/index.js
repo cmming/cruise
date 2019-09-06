@@ -1,13 +1,10 @@
 import { mergeFile } from '@/utils/function'
 // https://webpack.js.org/guides/dependency-management/#requirecontext
-const modulesFiles = require.context('./', true, /\.router.js$/)
+const modulesFiles = require.context('@', true, /\.zh.js$/)
 
+// you do not need `import app from './modules/app'`
 // it will auto require all vuex module from modules file
 const modules = mergeFile(modulesFiles)
 
-let result = []
-for (let i in modules) {
-    result.push(...modules[i])
-}
 
-export default result
+export default modules
