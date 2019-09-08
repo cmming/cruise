@@ -10,7 +10,6 @@ import { cancelRequest } from '@/router/interceptors/index'
 function openNotificationWithIcon(type, langId, isI18n = true) {
     console.log(isI18n ? i18n.messages[i18n.locale]['response'][langId] : langId)
         // Notification({
-        //     // title: i18n.messages[i18n.locale]['backstage']['response']['success']['title'],
         //     message: isI18n ? i18n.messages[i18n.locale]['response'][langId] : langId,
         //     type: type,
         //     duration: globalConfig.notificationDuration
@@ -51,12 +50,6 @@ export default function responseMsgInterceptorHandle(response) {
                 router.push('/login')
                 break;
         }
-        // if (response.data.code && response.data.code == 401) {
-        //     alert(1)
-
-        // } else {
-        //     openNotificationWithIcon('error', response.statusText)
-        // }
     } else if (response.status === httpStatus.BAD_REQUEST) {
         openNotificationWithIcon('error', response.data.message, false)
     } else {

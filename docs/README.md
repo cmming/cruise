@@ -30,32 +30,24 @@ npm run lint
 npm run test:unit
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Run your docs
+```
+docsify serve ./docs/ --port 3999
+```
 
 
-## 使用开源工具
+## Using open source tools
 
-- [ ] 文档 [docsifyjs](https://github.com/docsifyjs/docsify/)
-- [ ] 多语言 [vue-i18n](https://github.com/kazupon/vue-i18n)
-- [ ] 存储驱动 [store](https://github.com/marcuswestin/store.js)
+1. Document [docsifyjs](https://github.com/docsifyjs/docsify/)
+2. multi-language [vue-i18n](https://github.com/kazupon/vue-i18n)
+3. Storage driver [store](https://github.com/marcuswestin/store.js)
 
-
-## 项目工程化
-
-### Axios 封装
-
-#### 错误拦截
-
-#### loading 封装
-
-### 多语言
-
-
-### 菜单封装
-
-
-### 功能模块区分
-
-### 动态路由
-
+## Project engineering
+- [x] Axios Package
+- [x] Error interception
+- [x] multi-language
+- [x] Dynamic routing
+- [x] Dynamic menu
+- [x] Functional module differentiation
+- [x] Docker image packaging
+- [x] File dependency auto import

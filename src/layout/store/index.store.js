@@ -1,6 +1,7 @@
 const state = {
     menuCollapse: false,
-    dynamicMenu: []
+    dynamicMenu: [],
+    axiosPromiseArr: [],
 }
 
 const getters = {
@@ -9,7 +10,10 @@ const getters = {
     },
     dynamicMenu: state => {
         return state.dynamicMenu
-    }
+    },
+    axiosPromiseArr: state => {
+        return state.axiosPromiseArr
+    },
 }
 
 const mutations = {
@@ -18,6 +22,15 @@ const mutations = {
     },
     SET_USER_MENU: (state, data) => {
         state.dynamicMenu = data
+    },
+    ADD_AXIOS: (state, data) => {
+        state.axiosPromiseArr.push(data)
+    },
+    DELETE_AXIOS: (state, index) => {
+        delete state.axiosPromiseArr[index]
+    },
+    INIT_AXIOS: (state) => {
+        state.axiosPromiseArr = []
     },
 }
 
@@ -29,6 +42,15 @@ const actions = {
         commit
     }, params) {
         commit('SET_USER_MENU', params);
+    },
+    storeAxios({ commit }, params) {
+        commit('ADD_AXIOS', params)
+    },
+    deleteAxios({ commit }, params) {
+        commit('DELETE_AXIOS', params)
+    },
+    initAxios({ commit }, params) {
+        commit('INIT_AXIOS', params)
     },
 }
 

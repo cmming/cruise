@@ -1,8 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { dynamicAddRoute, changePageTitle } from './interceptors/index'
-// import Home from '../views/Home.vue'
-// import map from './map/index'
+import { dynamicAddRoute, changePageTitle,cancelRequest } from './interceptors/index'
 
 Vue.use(Router)
 
@@ -29,6 +27,8 @@ export function resetRouter() {
 // eslint-disable-next-line
 router.beforeEach((to, from, next) => {
     changePageTitle(to)
+    // Cancel the previous page request to avoid meaningless requests
+    cancelRequest()
     dynamicAddRoute(to, from, next, router)
 })
 

@@ -1,0 +1,18 @@
+language: node_js
+node_js:
+- '10'
+addons:
+  ssh_known_hosts:
+  - cruise.com
+before_install:
+- openssl aes-256-cbc -K $encrypted_09d97a7e586a_key -iv $encrypted_09d97a7e586a_iv
+  -in id_rsa_cruise.enc -out ~/.ssh/id_rsa_cruise -d
+- chmod 600 ~/.ssh/id_rsa_cruise
+- echo -e "Host cruise.com\n\tHostName 192.168.50.179\n\tStrictHostKeyChecking no\n\tIdentityFile ~/.ssh/id_rsa_cruise" >> ~/.ssh/config
+install:
+- yarn install
+script:
+- yarn build:travis
+after_success:
+- scp -o stricthostkeychecking=no -r ./dist root@cruise.com:/home/cruise/app
+- ssh root@cruise.com -o StrictHostKeyChecking=no 'cd /home/cruise && docker-compose up -d --build'   #使用ssh连接服务器

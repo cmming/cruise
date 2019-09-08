@@ -1,0 +1,27 @@
+version: '3.5'
+
+services:
+
+  upstream_server:
+    image: nginx:alpine
+    ports:
+      - 280:80
+    restart: unless-stopped
+    volumes:
+      - ./upstream.conf:/etc/nginx/conf.d/default.conf
+      - ./gzip.conf:/etc/nginx/conf.d/gzip.conf
+    networks:
+      - default
+      - nginx_net
+
+  app_server:
+    image: chmi294225707/nginx:vue_beta_gzip_v1
+    restart: unless-stopped
+    networks:
+      - default
+    volumes:
+      - ./gzip.conf:/etc/nginx/conf.d/gzip.conf
+
+networks:
+  nginx_net:
+    external: true
