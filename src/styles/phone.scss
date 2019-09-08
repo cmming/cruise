@@ -1,0 +1,44 @@
+@import "./mixin.scss";
+@media screen and (max-width: $screen-sm-min) {
+    #app {
+        .page-main {
+            margin-left: 0 !important;
+            margin-top: 55px;
+            .card-panel-container {
+                display: initial;
+            }
+        }
+        .sum-row-panel {
+            padding-right: 5px !important;
+            margin-top: 10px;
+            height: 140px;
+        }
+        .card.m-b-m,
+        .n-m-l.bg-white {
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+        }
+        .card {
+            border-left: 3px solid transparent;
+            &.idle {
+                border-color: $--color-success
+            }
+            &.building {
+                border-color: $--color-warning
+            }
+        }
+        .message {
+            .message-icon,
+            .message-detail-status {
+                display: none !important;
+            }
+            .message-detail span {
+                display: inline-block;
+                margin-bottom: 5px;
+            }
+            .message-detail-top {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

@@ -12,7 +12,7 @@ const messages = {
         zh: zhLocale
     }
     // eslint-disable-next-line
-    // console.log(messages)
+    console.log(messages)
 const i18n = new VueI18n({
     locale: storage.get('app-language') || getLanguage(), // set locale
     messages // set locale messages

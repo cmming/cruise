@@ -1,0 +1,83 @@
+@import "./mixin.scss";
+@media screen and (max-width:$screen-md-min) {
+    #app {
+        .mobile-menu {
+            display: inline;
+        }
+        &.open {
+            .page-sidebar {
+                margin-left: 0px;
+            }
+            .page-main {
+                left: 220px;
+            }
+            // .app-footer {
+            //     left: 220px;
+            // }
+        }
+        .page-sidebar {
+            transition: all .4s;
+            margin-left: -220px;
+            z-index: 9;
+        }
+        .page-main {
+            transition: all .4s;
+            margin-left: 0 !important;
+            margin-top: 70px;
+            width: 100vw;
+            position: relative;
+            left: 0;
+        }
+        @media screen and (min-width: $screen-sm-min) {
+            .sum-row-panel {
+                padding-right: 5px !important;
+            }
+            .row-panel-item {
+                height: 33%;
+                line-height: 33%;
+                width: 100% !important;
+                .row-panel-top {
+                    float: left;
+                    width: auto;
+                    position: inherit;
+                    margin-left: 15px;
+                    margin-top: 15px;
+                }
+                .row-panel-bottom {
+                    float: right;
+                    width: auto;
+                    position: inherit;
+                    margin-right: 15px;
+                    margin-top: 15px;
+                }
+            }
+        }
+        .card.m-b-m,
+        .n-m-l.bg-white {
+            margin-left: 5px !important;
+            margin-right: 5px !important;
+        }
+        .card {
+            border-left: 3px solid transparent;
+            &.idle {
+                border-color: $--color-success
+            }
+            &.building {
+                border-color: $--color-warning
+            }
+        }
+        .message {
+            .message-icon,
+            .message-detail-status {
+                display: none !important;
+            }
+            .message-detail span {
+                display: inline-block;
+                margin-bottom: 5px;
+            }
+            .message-detail-top {
+                margin-bottom: 5px;
+            }
+        }
+    }
+}

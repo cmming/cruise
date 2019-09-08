@@ -1,8 +1,9 @@
+    // A page that does not require permission verification, such as a landing page
     export default [{
             path: '/',
             name: 'home',
             component: () =>
-                import ( /* webpackChunkName: "home" */ '@/views/Home.vue')
+                import ( /* webpackChunkName: "home" */ '@/modules/errorPage/views/404')
         },
         {
             path: '/about',
@@ -11,6 +12,6 @@
             // this generates a separate chunk (about.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
             component: () =>
-                import ( /* webpackChunkName: "about" */ '@/views/About.vue')
-        }
+                import ( /* webpackChunkName: "about" */ '@/modules/errorPage/views/404')
+        },
     ]

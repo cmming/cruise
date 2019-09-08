@@ -6,16 +6,19 @@
       <div class="page-main">
         <router-view />
       </div>
+      <v-footer></v-footer>
     </section>
   </div>
 </template>
 <script>
 import VSidebar from "./components/sidebar";
 import VHeader from "./components/header";
+import VFooter from "./components/footer";
 export default {
   components: {
     VHeader,
-    VSidebar
+    VSidebar,
+    VFooter
   }
 };
 </script>

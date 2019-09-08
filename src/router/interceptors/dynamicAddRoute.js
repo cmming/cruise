@@ -1,4 +1,5 @@
 import { mergeFile } from '@/utils/function'
+import store from '@/store'
 export function fnAddDynamicRoutes(dynamicRoutes) {
     function importCompent(dynamicRoutes) {
         dynamicRoutes.map(((val) => {
@@ -35,25 +36,53 @@ export function fnAddDynamicRoutes(dynamicRoutes) {
     return dynamicRoutes
 }
 
+function fnAddDynamicMenu(dynamicMenu) {
+    let dynamicMenuTmp = [...dynamicMenu]
 
+    function fnAddMenu(dynamicMenuTmps) {
+        dynamicMenuTmps.map((val) => {
+            if (val.meta.type === 'menu') {
+                _.unset(val, 'component')
+                if (val.children && val.children.length >= 1) {
+                    fnAddMenu(val.children)
+                } else {
+                    val['children'] = []
+                }
+            } else {
+                _.pull(dynamicMenuTmps, val)
+            }
+        })
+    }
 
-let routerList = []
+    fnAddMenu(dynamicMenuTmp)
 
-// https://webpack.js.org/guides/dependency-management/#requirecontext
-const modulesFiles = require.context('@/modules', true, /\.router.js$/)
-
-// it will auto require all vuex module from modules file
-const modules = mergeFile(modulesFiles)
-
-for (let i in modules) {
-    routerList.push(...modules[i])
+    return dynamicMenuTmp
 }
+
+
 
 // eslint-disable-next-line
 export function dynamicAddRoute(to, from, next, router) {
+    let routerList = []
+
+    // https://webpack.js.org/guides/dependency-management/#requirecontext
+    const modulesFiles = require.context('@/modules', true, /\.router.js$/)
+
+    // it will auto require all vuex module from modules file
+    const modules = mergeFile(modulesFiles)
+
+    for (let i in modules) {
+        routerList.push(...modules[i])
+    }
+
     if (!router.options.isLoad) {
+        // to vue-router
         let routes = fnAddDynamicRoutes(routerList)
         router.addRoutes(routes)
+            // to menu list
+        let menus = fnAddDynamicMenu(routerList)
+        store.dispatch('setUserMenu', menus)
+
         router.options.isLoad = true
         next({...to, replace: true })
     } else {

@@ -3,8 +3,8 @@ export default [{
     component: 'layout/index',
     name: 'dashboard',
     meta: {
-        title: 'dashboard',
-        icon: 'dashboard',
+        title: 'DASHBOARD',
+        icon: 'icon-dashboard',
         type: "menu",
         hidden: false,
     },
@@ -12,11 +12,21 @@ export default [{
         path: '/dashboard',
         component: 'modules/dashboard/views/index',
         name: 'dashboardIndex',
-        meta: { title: 'dashboard', icon: 'dashboard', type: "menu", hidden: false }
-    },{
+        meta: { title: 'DASHBOARD', icon: 'icon-dashboard', type: "menu", hidden: false }
+    }, {
         path: '/agent',
         component: 'modules/agent/views/index',
         name: 'agentIndex',
-        meta: { title: 'agent', icon: 'agent', type: "menu", hidden: false }
+        meta: { title: 'AGENT', icon: 'icon-sitemap', type: "menu", hidden: false }
+    }, {
+        path: '/cruise',
+        component: 'modules/cruise/views/index',
+        name: 'cruiseIndex',
+        meta: { title: 'MY CRUISE', icon: 'icon-coffee', type: "menu", hidden: false }
+    }, {
+        path: '/help',
+        component: 'modules/help/views/index',
+        name: 'helpIndex',
+        meta: { title: 'HELP', icon: 'icon-life-bouy', type: "menu", hidden: false }
     }]
 }, ]
