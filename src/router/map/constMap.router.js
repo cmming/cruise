@@ -1,9 +1,7 @@
     // A page that does not require permission verification, such as a landing page
     export default [{
             path: '/',
-            name: 'home',
-            component: () =>
-                import ( /* webpackChunkName: "home" */ '@/modules/errorPage/views/404')
+            redirect:'/agent'
         },
         {
             path: '/about',
