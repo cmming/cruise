@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import { dynamicAddRoute } from './interceptors/index'
+import { dynamicAddRoute, changePageTitle } from './interceptors/index'
 // import Home from '../views/Home.vue'
 // import map from './map/index'
 
@@ -28,6 +28,7 @@ export function resetRouter() {
 
 // eslint-disable-next-line
 router.beforeEach((to, from, next) => {
+    changePageTitle(to)
     dynamicAddRoute(to, from, next, router)
 })
 

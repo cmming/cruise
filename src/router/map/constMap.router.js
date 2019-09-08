@@ -14,4 +14,11 @@
             component: () =>
                 import ( /* webpackChunkName: "about" */ '@/modules/errorPage/views/404')
         },
+        {
+            path: '/redirect:path*',
+            component: () =>
+                import ('@/modules/tool/views/redirect'),
+            name: 'redirect',
+            meta: { model:'redirect',title: 'redirect' }
+        },
     ]

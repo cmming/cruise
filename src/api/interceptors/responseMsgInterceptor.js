@@ -1,6 +1,5 @@
 // 根据响应的数据 弹出相对于的消息
 import httpStatus from '@/config/statusCode'
-// import globalConfig from '@/config/globalConfig'
 import store from '@/store'
 import router from '@/router/index'
 import i18n from '@/lang/index'
@@ -38,10 +37,10 @@ export default function responseMsgInterceptorHandle(response) {
                 store.dispatch('refreshToken').then(() => {
                     request(response.config)
                     const { fullPath } = router.currentRoute
-                    router.replace('/admin/redirect' + fullPath)
+                    router.replace('/redirect' + fullPath)
                 }).catch(() => {
                     const { fullPath } = router.currentRoute
-                    router.replace('/admin/redirect' + fullPath)
+                    router.replace('/redirect' + fullPath)
                 })
                 break;
             case 401005:

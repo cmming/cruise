@@ -21,7 +21,6 @@ class httpStatus {
     }
 
     static getMsg(code) {
-        // console.log(this.codeEnums()[code])
         return this.codeEnums()[code]
     }
 }

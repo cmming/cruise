@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-// import { mergeFile } from '@/utils/function'
 
 Vue.use(Vuex)
 
@@ -13,7 +12,6 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
     return Object.assign(modules,value.default)
 }, {})
 
-console.log(modules)
 const store = new Vuex.Store({
     modules
 })

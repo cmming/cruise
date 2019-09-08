@@ -10,6 +10,7 @@ export default {
             "AGENT":"AGENT",
             "MY CRUISE":"MY CRUISE",
             "HELP":"帮助",
+            "default":"CRUISE"
         },
         History:"历史",
         footer:"© Copyright 2017 ThoughtWork"

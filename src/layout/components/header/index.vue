@@ -43,11 +43,7 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
-import DropdownMenu from "@/components/DropdownMenu/index.vue";
 export default {
-  components: {
-    DropdownMenu
-  },
   computed: {
     ...mapGetters(["menuCollapse"])
   },
@@ -60,7 +56,7 @@ export default {
     changeMenuStatus() {
       this.$store.dispatch("setMenuCollapse", !this.menuCollapse);
     },
-    showDropdownMenu(status) {
+    showDropdownMenu() {
       this.menuShow = !this.menuShow;
     }
   }
